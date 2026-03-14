@@ -59,13 +59,13 @@ The dataset used for this project contains real-world data science job informati
 
 ```
 =MEDIAN(
-IF(
+  IF(
     (jobs[job_title_short]=A2)*
+    (jobs[salary_year_avg]<>0)*
     (jobs[job_country]=country)*
-    (ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
-    (jobs[salary_year_avg]<>0),
+    (ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
     jobs[salary_year_avg]
-)
+  )
 )
 ```
 
@@ -85,15 +85,15 @@ IF(
 #### ⏰ Count of Job Schedule Type
 
 ```
-=FILTER(J2#,(NOT(ISNUMBER(SEARCH("and",J2#))+ISNUMBER(SEARCH(",",J2#))))*(J2#<>0))
+=FILTER(K2#,NOT(ISNUMBER(SEARCH("and",K2#)))*(K2#<>0))
 ```
 
-- 🔍 **Unique List Generation:** This Excel formula below employs the `FILTER()` function to exclude entries containing "and" or commas, and omit zero values.
+- 🔍 **Unique List Generation:** This Excel formula above employs the `FILTER()` function to exclude entries containing "and" or commas, and omit zero values.
 - **🔢 Formula Purpose:** This formula populates the table below, which gives us a list of unique job schedule types.
 
 🍽️ Background Table
 
-![Salary_Dashboard_Screenshot1.png](/Project_1_Dashboard/Salary_Dashboard_Screenshot1.png)
+![Salary_Dashboard_Screenshot2.png](/Project_1_Dashboard/Salary_Dashboard_Screenshot2.png)
 
 📉 Dashboard Implementation:
 
@@ -112,4 +112,4 @@ IF(
 
 ## Conclusion
 
-I created this dashboard to showcase insights into salary trends across various data-related job titles. Utilizing data from my Excel course, this dashboard allows users to make informed decisions about their career paths. Exploring the functionalities to understand how location and job type influence salaries. 
+I have built this dashboard to help you explore salary trends across different data related job roles, whether you're just starting out or planning your next career move. It’s designed to give you a clearer picture of how factors like location and job type can impact earning potential. Feel free to click around and see what stands out, the insights might just help you make your next big decision with confidence.
